@@ -31,6 +31,28 @@ body {
   background-color: #1f1f1f;
 }
 
+/* Scroll Snap for SPA sections */
+.snap-y {
+  scroll-snap-type: y mandatory;
+}
+.snap-start {
+  scroll-snap-align: start;
+}
+
+/* Luxury theme enhancements */
+.luxury-bg {
+  background: linear-gradient(135deg, #fff 0%, #e5e5e5 100%);
+}
+.luxury-dark {
+  background: linear-gradient(135deg, #111 0%, #222 100%);
+}
+.luxury-border {
+  border: 1.5px solid #e5e5e5;
+}
+.luxury-border-dark {
+  border: 1.5px solid #222;
+}
+
 a,
 button {
   cursor: pointer;
