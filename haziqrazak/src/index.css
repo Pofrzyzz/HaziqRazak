@@ -16,13 +16,25 @@
     transform: scale(1) translateY(0);
   }
 }
-section[id^="projects"], section[id^="skills"] {
+
+section[id^="projects"], section[id^="skills"], section[id^="education"], section[id^="certifications"] {
   margin-bottom: 128px;
   padding-bottom: 80px;
 }
-section[id^="certifications"], section[id^="experience"] {
+section[id^="experience"] {
   margin-bottom: 128px;
   padding-bottom: 48px;
+}
+
+@media (max-width: 640px) {
+  section[id^="projects"], section[id^="skills"], section[id^="education"], section[id^="certifications"] {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+  }
+  section[id^="experience"] {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+  }
 }
 
 
