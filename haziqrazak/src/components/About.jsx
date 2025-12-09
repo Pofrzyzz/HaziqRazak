@@ -2,8 +2,8 @@ import { FaEnvelope, FaGithub, FaLinkedin, FaInstagram, FaDownload } from "react
 
 export default function About() {
   return (
-    <section className="h-screen w-full flex flex-col items-center justify-center bg-black text-white" id="about" data-section="about">
-      <div className="max-w-2xl text-center">
+    <section className="min-h-screen w-full flex flex-col items-center justify-center bg-black text-white py-8 px-2 sm:px-4" id="about" data-section="about">
+      <div className="max-w-2xl w-full mx-auto text-center">
         <h2 className="text-4xl font-bold mb-6">About Me</h2>
         <p className="text-xl mb-6 leading-relaxed">
           My name is <strong>Haziq</strong> and I’m a student from <strong>Singapore</strong>.<br />

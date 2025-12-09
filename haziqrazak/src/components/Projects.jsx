@@ -6,10 +6,10 @@ import battleshipBotImg from "../assets/battleshipBot.png";
 
 export default function Projects() {
   return (
-    <section className="h-screen w-full flex flex-col items-center justify-center bg-black text-white" id="projects" data-section="projects">
-      <div className="w-full px-4 mb-16">
-        <h2 className="text-4xl font-bold mb-10 text-center">Projects</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    <section className="min-h-screen w-full flex flex-col items-center justify-center bg-black text-white py-8 px-2 sm:px-4" id="projects" data-section="projects">
+      <div className="w-full max-w-6xl mx-auto mb-8">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">Projects</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
           {/* Personal Website */}
           <div className="flex flex-col items-center bg-white/10 p-6 rounded-lg shadow-lg border border-white/10 w-full animate-skill-card">
             <div className="w-full h-32 mb-4 flex items-center justify-center bg-white/30 rounded-lg overflow-hidden">

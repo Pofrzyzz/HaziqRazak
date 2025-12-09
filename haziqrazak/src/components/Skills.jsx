@@ -15,10 +15,10 @@ import {
 
 export default function Skills() {
   return (
-    <section className="h-screen w-full flex flex-col items-center justify-center bg-black text-white" id="skills" data-section="skills">
-      <div className="w-full px-4 mb-16">
-        <h2 className="text-4xl font-bold mb-10 text-center">Skills & Proficiencies</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    <section className="min-h-screen w-full flex flex-col items-center justify-center bg-black text-white py-8 px-2 sm:px-4" id="skills" data-section="skills">
+      <div className="w-full max-w-6xl mx-auto mb-8">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">Skills & Proficiencies</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
           {[
             { name: "Golang", logo: <SiGoland size={40} />, proficiency: "Intermediate" },
             { name: "Adobe Photoshop", logo: <SiAdobephotoshop size={40} />, proficiency: "Advanced" },
