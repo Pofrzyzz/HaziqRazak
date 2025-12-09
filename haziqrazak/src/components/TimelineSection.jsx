@@ -2,17 +2,7 @@
 import AnimatedFadeIn from "./AnimatedFadeIn";
 
 // Timeline data structure
-const timelineData = [
-  {
-    type: "Education",
-    title: "Ngee Ann Polytechnic",
-    subtitle: "Information Technology",
-    date: "2023–2026",
-    details: [
-      "Participated in ICT Society",
-      "Specialization in Cloud Computing & Cloud Architecture",
-    ],
-  },
+export const timelineData = [
   {
     type: "Education",
     title: "Unity Secondary School",
@@ -25,12 +15,22 @@ const timelineData = [
     ],
   },
   {
+    type: "Education",
+    title: "Ngee Ann Polytechnic",
+    subtitle: "Information Technology",
+    date: "2023–2026",
+    details: [
+      "Participated in ICT Society",
+      "Specialization in Cloud Computing & Cloud Architecture",
+    ],
+  },
+  {
     type: "Experience",
     title: "OCBC Ignite Internship",
     subtitle: "Internship",
     date: "2025–2026",
     details: [
-      "Upcoming Internship for my 3rd Year in Polytechnic",
+      "Full Stack Developer Intern",
       "Official Start Date: 17th March 2025",
     ],
   },
@@ -54,6 +54,9 @@ const timelineData = [
       "Positive guest feedback recognition",
     ],
   },
+];
+
+export const certificationsData = [
   {
     type: "Certifications",
     title: "Professional Scrum Master™ I (PSM I)",

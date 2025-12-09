@@ -62,16 +62,18 @@ function AnimatedMenuIcon({ open, onClick }) {
 }
 
 const MENU_SECTIONS = [
-  { id: "home", label: "HOME", href: "#" },
+  { id: "hero", label: "HOME", href: "#hero" },
   { id: "about", label: "ABOUT", href: "#about" },
+  { id: "education", label: "EDUCATION", href: "#education" },
   { id: "projects", label: "PROJECTS", href: "#projects" },
   { id: "skills", label: "SKILLS", href: "#skills" },
-  { id: "timeline", label: "TIMELINE", href: "#timeline" },
+  { id: "certifications", label: "CERTIFICATIONS", href: "#certifications" },
+  { id: "experience", label: "EXPERIENCE", href: "#experience" },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState("hero");
 
   // Listen for scroll to update active section
   useEffect(() => {
@@ -83,13 +85,13 @@ export default function Navbar() {
       const aboutTop = aboutEl ? aboutEl.getBoundingClientRect().top + window.scrollY : Infinity;
       const projectsTop = projectsEl ? projectsEl.getBoundingClientRect().top + window.scrollY : Infinity;
       if (scrollY < aboutTop - 80) {
-        setActiveSection('home');
+        setActiveSection('hero');
       } else if (scrollY >= aboutTop - 80 && scrollY < projectsTop - 80) {
         setActiveSection('about');
       } else if (scrollY >= projectsTop - 80 && scrollY < document.body.scrollHeight) {
         // Fallback: use offsets for other sections
         const offsets = MENU_SECTIONS.map(({ id, href }) => {
-          if (id === 'home' || id === 'about') return null;
+          if (id === 'hero' || id === 'about') return null;
           const el = document.getElementById(href.replace('#', ''));
           return el ? { id, top: el.getBoundingClientRect().top + window.scrollY } : null;
         }).filter(Boolean);
@@ -101,33 +103,6 @@ export default function Navbar() {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // Smooth scroll to section
-  function scrollToSection(href) {
-    if (href === "#") {
-      // Scroll to center of hero section
-      const hero = document.getElementById('hero') || document.querySelector('[data-hero], .hero');
-      if (hero) {
-        const rect = hero.getBoundingClientRect();
-        const scrollY = window.scrollY + rect.top + rect.height / 2 - window.innerHeight / 2;
-        window.scrollTo({ top: scrollY, behavior: 'smooth' });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    } else {
-      const id = href.replace('#', '');
-      const el = document.getElementById(id);
-      if (el) {
-        // Scroll to center of section
-        const rect = el.getBoundingClientRect();
-        const scrollY = window.scrollY + rect.top + rect.height / 2 - window.innerHeight / 2;
-        window.scrollTo({ top: scrollY, behavior: 'smooth' });
-      } else {
-        window.location.hash = href;
-      }
-    }
-    setMenuOpen(false);
-  }
 
   // Use a more interesting font (Montserrat or fallback)
   const fontClass = "font-mono"; // Change to e.g. 'font-montserrat' if you add it to Tailwind config
@@ -144,28 +119,60 @@ export default function Navbar() {
       >
         {MENU_SECTIONS.map(({ id, label, href }) => {
           const isActive = id === activeSection;
+          // Add offset for all except hero
+          const handleClick = (e) => {
+            setMenuOpen(false);
+            if (id !== 'hero') {
+              e.preventDefault();
+              const el = document.getElementById(id) || document.querySelector(`[data-section="${id}"]`);
+              if (el) {
+                const rect = el.getBoundingClientRect();
+                // Offset by 80px for better section detection
+                const scrollY = window.scrollY + rect.top - 80;
+                window.scrollTo({ top: scrollY, behavior: 'smooth' });
+                // Update hash in URL
+                history.replaceState(null, '', href);
+              }
+            }
+          };
           return (
-            <button
+            <a
               key={id}
-              className={`relative text-white text-4xl mb-8 tracking-widest ${fontClass} font-extrabold transition-all duration-200 px-2 ${isActive ? "line-through opacity-60" : "opacity-100 group"}`}
+              href={href}
+              className={`relative text-white text-4xl mb-8 tracking-widest ${fontClass} font-extrabold transition-all duration-200 px-2 opacity-100 group`}
               style={{ letterSpacing: '0.2em', outline: 'none', background: 'none', border: 'none' }}
-              {...(!isActive ? { onClick: () => scrollToSection(href) } : {})}
-              tabIndex={isActive ? -1 : 0}
-              aria-disabled={isActive}
-              disabled={isActive}
+              tabIndex={0}
+              aria-disabled={false}
+              onClick={handleClick}
             >
-              <span>{label}</span>
-              {/* Animated underline for hover (not underline, but a bar that grows) */}
-              {!isActive && (
-                <span
-                  className="absolute left-0 bottom-0 w-full h-1 bg-gradient-to-r from-white/80 to-white/40 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full"
-                  aria-hidden="true"
-                />
-              )}
-            </button>
+              <AnimatedLetters text={label} />
+              <span
+                className="absolute left-0 bottom-0 w-full h-1 bg-gradient-to-r from-white/80 to-white/40 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full"
+                aria-hidden="true"
+              />
+            </a>
           );
         })}
       </div>
     </nav>
   );
+}
+
+// Per-letter hover animation component
+function AnimatedLetters({ text }) {
+  return (
+    <span className="inline-block animated-letters">
+      {text.split("").map((char, i) => (
+        <span
+          key={i}
+          className="inline-block animated-letter"
+          style={{ transitionDelay: `${i * 40}ms` }}
+          aria-hidden="true"
+        >
+          <span className="letter-front">{char}</span>
+          <span className="letter-back">{char}</span>
+        </span>
+      ))}
+    </span>
+  )
 }

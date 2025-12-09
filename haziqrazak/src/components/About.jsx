@@ -6,8 +6,9 @@ export default function About() {
       <div className="max-w-2xl text-center">
         <h2 className="text-4xl font-bold mb-6">About Me</h2>
         <p className="text-xl mb-6 leading-relaxed">
-          My name is <strong>Haziq</strong> and I’m a <strong>19-year-old</strong> student from <strong>Singapore</strong>.<br />
-          I study Information Technology at Ngee Ann Polytechnic.
+          My name is <strong>Haziq</strong> and I’m a student from <strong>Singapore</strong>.<br />
+          I'm currently pursuing Information Technology at Ngee Ann Polytechnic. <br />
+          My interests include games, F1 and web dev.
         </p>
         <div className="flex space-x-6 mb-6 justify-center">
           <a
