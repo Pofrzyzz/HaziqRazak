@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /src/pages/SecretPage.jsx
+Disallow: /src/firebaseConfig.js
+Disallow: /src/components/EducationSection.jsx
+Disallow: /src/components/TimelineSection.jsx
+Disallow: /src/components/HeroWaves.jsx
+Disallow: /src/components/Projects.jsx
+Disallow: /src/components/CertificationsTimeline.jsx
+Disallow: /src/components/ExperienceTimeline.jsx
+Disallow: /src/components/Navbar.jsx
+Disallow: /src/components/Skills.jsx
+Disallow: /src/components/About.jsx
+Disallow: /src/components/CenteredHeaderSection.jsx
+Disallow: /src/components/AnimatedHeader.jsx
+Disallow: /src/components/AnimatedFadeIn.jsx
+Disallow: /src/assets/
+Disallow: /public/playlist/
